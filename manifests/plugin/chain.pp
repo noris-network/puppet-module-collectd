@@ -1,5 +1,5 @@
 #
-class collectd::plugin::chain (
+define collectd::plugin::chain (
   $chainname     = 'Main',
   $ensure        = 'present',
   $defaulttarget = 'write',

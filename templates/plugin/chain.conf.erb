@@ -12,7 +12,13 @@
 <% else -%>
     <Target "<%= target['type'] %>">
 <% target['attributes'].each do |key, value| -%>
-      <%= key %> "<%= value %>"
+  <%= key -%>
+<% if value.kind_of?(Array) -%>
+  <% value.each do |val_each| -%>
+   "<%= val_each -%>" <% end -%>
+<% else -%>
+   "<%= value -%>"
+<% end %>
 <% end -%>
     </Target>
 <% end -%>
