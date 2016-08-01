@@ -1,4 +1,4 @@
-class collectd::plugin::write_kafka (
+define collectd::plugin::write_kafka (
   $ensure     = 'present',
   $kafka_host = 'localhost',
   $kafka_port = 9092,
