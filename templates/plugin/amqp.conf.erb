@@ -1,21 +1,33 @@
 <Plugin amqp>
-  <Publish "graphite">
+<% if @amqppublish -%>
+#
+# AMQP Publish
+#
+  <Publish "amqp">
     Host "<%= @amqphost %>"
     Port "<%= @amqpport %>"
     VHost "<%= @amqpvhost%>"
     User "<%= @amqpuser %>"
     Password "<%= @amqppass %>"
+<% if @amqpformat -%>
     Format "<%= @amqpformat %>"
+<% end -%>
 <% if @amqpstorerates and @amqpformat == 'JSON' -%>
     StoreRates true
 <% else -%>
     StoreRates false
 <% end -%>
+<% if @amqpexchange -%>
     Exchange "<%= @amqpexchange %>"
+<% end -%>
+<% if @amqppersistent -%>
     Persistent <%= @amqppersistent %>
+<% end -%>
     RoutingKey "<%= @amqproutingkey %>"
+<% if @graphiteprefix -%>
     GraphitePrefix "<%= @graphiteprefix %>"
     GraphiteEscapeChar "<%= @escapecharacter %>"
+<% end -%>
 <% if scope.lookupvar('collectd::collectd_version_real') and (scope.function_versioncmp([scope.lookupvar('collectd::collectd_version_real'), '5.4']) >= 0) -%>
 <%   if @graphiteseparateinstances -%>
     GraphiteSeparateInstances <%= @graphiteseparateinstances %>
@@ -25,4 +37,36 @@
 <%   end -%>
 <% end -%>
   </Publish>
+#
+# END AMQP Publish
+#
+<% end -%>
+
+<% if @amqpsubscribe -%>
+#
+# AMQP Subscrube
+#
+  <Subscribe "amqp">
+    Host "<%= @amqphost %>"
+    Port "<%= @amqpport %>"
+    VHost "<%= @amqpvhost%>"
+    User "<%= @amqpuser %>"
+    Password "<%= @amqppass %>"
+<% if @amqpformat -%>
+    Format "<%= @amqpformat %>"
+<% end -%>
+<% if @amqpexchange -%>
+    Exchange "<%= @amqpexchange %>"
+<% end -%>
+<% if @amqpqueue -%>
+    Queue "<%= @amqpqueue %>"
+<% end -%>
+<% if @amqproutingkey -%>
+    RoutingKey "<%= @amqproutingkey %>"
+<% end -%>
+  </Subscribe>
+#
+# END AMQP Subscrube
+#
+<% end -%>
 </Plugin>

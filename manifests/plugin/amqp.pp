@@ -17,13 +17,20 @@ class collectd::plugin::amqp (
   Optional[Integer[1]] $interval     = undef,
   Boolean $graphiteseparateinstances = false,
   Boolean $graphitealwaysappendds    = false,
+  String  $amqpqueue                 = undef,
+  Boolean $amqppublish               = false,
+  Boolean $amqpsubscribe             = false,
 ) {
 
   include collectd
 
-  if $facts['os']['family'] == 'RedHat' {
-    if $manage_package {
+  if $_manage_package {
+    if $facts['os']['family'] == 'RedHat' {
       package { 'collectd-amqp':
+        ensure => $ensure,
+      }
+    } elsif $::osfamily == 'Debian' {
+      package { 'amqp-tools':
         ensure => $ensure,
       }
     }
