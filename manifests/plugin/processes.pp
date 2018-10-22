@@ -1,16 +1,16 @@
 # See http://collectd.org/documentation/manpages/collectd.conf.5.shtml#plugin_processes
 class collectd::plugin::processes (
-  $ensure          = 'present',
-  $order           = 10,
-  $interval        = undef,
-  $processes       = undef,
-  $process_matches = undef,
+  Enum['present', 'absent'] $ensure          = 'present',
+  Integer $order                             = 10,
+  Optional[Numeric] $interval                = undef,
+  Optional[Array] $processes                 = undef,
+  Optional[Array] $process_matches           = undef,
+  Optional[Boolean] $collect_context_switch  = undef,
+  Optional[Boolean] $collect_file_descriptor = undef,
+  Optional[Boolean] $collect_memory_maps     = undef,
 ) {
 
   include ::collectd
-
-  if $processes { validate_array($processes) }
-  if $process_matches { validate_array($process_matches) }
 
   collectd::plugin { 'processes':
     ensure   => $ensure,
@@ -18,37 +18,39 @@ class collectd::plugin::processes (
     interval => $interval,
   }
 
-  if ( $processes or $process_matches ) {
-    $process_config_ensure = 'present'
-  } else {
-    $process_config_ensure = absent
-  }
-
   concat { "${collectd::plugin_conf_dir}/processes-config.conf":
-    ensure         => $process_config_ensure,
-    mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::root_group,
-    notify         => Service['collectd'],
+    ensure         => $ensure,
+    mode           => $collectd::config_mode,
+    owner          => $collectd::config_owner,
+    group          => $collectd::config_group,
+    notify         => Service[$collectd::service_name],
     ensure_newline => true,
   }
   concat::fragment { 'collectd_plugin_processes_conf_header':
     order   => '00',
-    content => '<Plugin processes>',
+    content => epp('collectd/plugin/processes-header.conf.epp'),
     target  => "${collectd::plugin_conf_dir}/processes-config.conf",
   }
+
   concat::fragment { 'collectd_plugin_processes_conf_footer':
     order   => '99',
     content => '</Plugin>',
     target  => "${collectd::plugin_conf_dir}/processes-config.conf",
   }
 
+  $defaults = { 'ensure' => $ensure }
+
   if $processes {
-    collectd::plugin::processes::process { $processes : }
+    $process_resources = collectd_convert_processes($processes)
+    create_resources(
+      collectd::plugin::processes::process,
+      $process_resources,
+      $defaults,
+    )
+
   }
   if $process_matches {
-    $process_matches_resources = collectd_convert_processmatch($process_matches)
-    $defaults = { 'ensure' => $ensure }
+    $process_matches_resources = collectd_convert_processes($process_matches)
     create_resources(
       collectd::plugin::processes::processmatch,
       $process_matches_resources,

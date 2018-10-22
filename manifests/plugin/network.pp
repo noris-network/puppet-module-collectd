@@ -1,23 +1,16 @@
 # https://collectd.org/wiki/index.php/Plugin:Network
 class collectd::plugin::network (
-  $ensure        = 'present',
-  $timetolive    = undef,
-  $maxpacketsize = undef,
-  $forward       = undef,
-  $interval      = undef,
-  $reportstats   = undef,
-  $listeners     = { },
-  $servers       = { },
+  Enum['present', 'absent'] $ensure          = 'present',
+  Optional[Pattern[/[0-9]+/]] $timetolive    = undef,
+  Optional[Pattern[/[0-9]+/]] $maxpacketsize = undef,
+  Optional[Boolean] $forward                 = undef,
+  Optional[Integer[1]] $interval             = undef,
+  Optional[Boolean] $reportstats             = undef,
+  Hash $listeners                            = {},
+  Hash $servers                              = {},
 ) {
 
   include ::collectd
-
-  if $timetolive {
-    validate_re($timetolive, '[0-9]+')
-  }
-  if $maxpacketsize {
-    validate_re($maxpacketsize, '[0-9]+')
-  }
 
   collectd::plugin { 'network':
     ensure   => $ensure,

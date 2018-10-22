@@ -1,3 +1,385 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+Each new release typically also includes the latest modulesync defaults.
+These should not affect the functionality of the module.
+
+## [v10.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v10.1.0) (2018-10-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.0.1...v10.1.0)
+
+**Implemented enhancements:**
+
+- Adapt write http plugin to new format [\#848](https://github.com/voxpupuli/puppet-collectd/pull/848) ([kazeborja](https://github.com/kazeborja))
+- allow puppetlabs/apt 5.x [\#842](https://github.com/voxpupuli/puppet-collectd/pull/842) ([bastelfreak](https://github.com/bastelfreak))
+- add AutoLoadPlugin to global options [\#840](https://github.com/voxpupuli/puppet-collectd/pull/840) ([mrunge](https://github.com/mrunge))
+- Add configuration/support for NFVPE plugins [\#835](https://github.com/voxpupuli/puppet-collectd/pull/835) ([paramite](https://github.com/paramite))
+
+**Fixed bugs:**
+
+- Persist the interval in the conf file as a number [\#859](https://github.com/voxpupuli/puppet-collectd/pull/859) ([nbarrientos](https://github.com/nbarrientos))
+- Fix wrong closure of Host parameter for curljson template [\#845](https://github.com/voxpupuli/puppet-collectd/pull/845) ([kazeborja](https://github.com/kazeborja))
+
+**Closed issues:**
+
+- Documentation for collectd::plugin::ping, needed to use class [\#841](https://github.com/voxpupuli/puppet-collectd/issues/841)
+
+**Merged pull requests:**
+
+- allow puppet 6.x [\#861](https://github.com/voxpupuli/puppet-collectd/pull/861) ([bastelfreak](https://github.com/bastelfreak))
+- Fix beaker tests [\#858](https://github.com/voxpupuli/puppet-collectd/pull/858) ([alexjfisher](https://github.com/alexjfisher))
+- allow puppetlabs/stdlib 5.x , puppetlabs/apt 6.x and puppetlabs/concat 5.x [\#850](https://github.com/voxpupuli/puppet-collectd/pull/850) ([bastelfreak](https://github.com/bastelfreak))
+- update gem dependencies [\#846](https://github.com/voxpupuli/puppet-collectd/pull/846) ([bastelfreak](https://github.com/bastelfreak))
+- Update collectd::plugin::ping example with an example that has been tested to succeeded [\#843](https://github.com/voxpupuli/puppet-collectd/pull/843) ([pckizer](https://github.com/pckizer))
+
+## [v10.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v10.0.1) (2018-07-29)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v10.0.0...v10.0.1)
+
+**Fixed bugs:**
+
+- update broken README.md example for plugin::write\_riemann [\#837](https://github.com/voxpupuli/puppet-collectd/pull/837) ([archii](https://github.com/archii))
+- Flush plugin config files [\#832](https://github.com/voxpupuli/puppet-collectd/pull/832) ([paramite](https://github.com/paramite))
+
+## [v10.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v10.0.0) (2018-07-15)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.1.0...v10.0.0)
+
+**Breaking changes:**
+
+- write\_riemann plugin fixes and enhancements [\#830](https://github.com/voxpupuli/puppet-collectd/pull/830) ([smortex](https://github.com/smortex))
+- Cleanup how python modules are configured [\#821](https://github.com/voxpupuli/puppet-collectd/pull/821) ([traylenator](https://github.com/traylenator))
+
+**Implemented enhancements:**
+
+- Hash, Array entries in config to python plugin ? [\#819](https://github.com/voxpupuli/puppet-collectd/issues/819)
+- Array sorted in python module [\#586](https://github.com/voxpupuli/puppet-collectd/issues/586)
+- Feature request - thresholds [\#292](https://github.com/voxpupuli/puppet-collectd/issues/292)
+- Make the threshold plugin configurable [\#829](https://github.com/voxpupuli/puppet-collectd/pull/829) ([smortex](https://github.com/smortex))
+- Add tail\_csv plugin [\#827](https://github.com/voxpupuli/puppet-collectd/pull/827) ([sileht](https://github.com/sileht))
+- Add table plugin [\#826](https://github.com/voxpupuli/puppet-collectd/pull/826) ([sileht](https://github.com/sileht))
+- Add powerdns plugin [\#824](https://github.com/voxpupuli/puppet-collectd/pull/824) ([sileht](https://github.com/sileht))
+- Add ipc plugin [\#823](https://github.com/voxpupuli/puppet-collectd/pull/823) ([sileht](https://github.com/sileht))
+- processes: Add missing options [\#822](https://github.com/voxpupuli/puppet-collectd/pull/822) ([sileht](https://github.com/sileht))
+- swap: add ReportIO option [\#814](https://github.com/voxpupuli/puppet-collectd/pull/814) ([sileht](https://github.com/sileht))
+
+## [v9.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.1.0) (2018-06-14)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.1...v9.1.0)
+
+**Implemented enhancements:**
+
+- syslog: Add option notify\_level [\#817](https://github.com/voxpupuli/puppet-collectd/pull/817) ([sileht](https://github.com/sileht))
+- ping: set parameters type and add Size [\#816](https://github.com/voxpupuli/puppet-collectd/pull/816) ([sileht](https://github.com/sileht))
+- turbotstat: Add LogicalCoreNames option [\#815](https://github.com/voxpupuli/puppet-collectd/pull/815) ([sileht](https://github.com/sileht))
+- Add numa plugin [\#813](https://github.com/voxpupuli/puppet-collectd/pull/813) ([sileht](https://github.com/sileht))
+- Add intel\_rdt plugin [\#812](https://github.com/voxpupuli/puppet-collectd/pull/812) ([sileht](https://github.com/sileht))
+- add hugepages plugin [\#811](https://github.com/voxpupuli/puppet-collectd/pull/811) ([sileht](https://github.com/sileht))
+- mysql: Add some missing options [\#810](https://github.com/voxpupuli/puppet-collectd/pull/810) ([sileht](https://github.com/sileht))
+- Add amqp1 plugin support [\#802](https://github.com/voxpupuli/puppet-collectd/pull/802) ([paramite](https://github.com/paramite))
+- plugin: update cpu for collectd 5.8 [\#801](https://github.com/voxpupuli/puppet-collectd/pull/801) ([sileht](https://github.com/sileht))
+- plugin: add battery plugin [\#800](https://github.com/voxpupuli/puppet-collectd/pull/800) ([sileht](https://github.com/sileht))
+- apache: sync options and add tests [\#798](https://github.com/voxpupuli/puppet-collectd/pull/798) ([sileht](https://github.com/sileht))
+- Add ExtraStats parameter to virt plugin [\#797](https://github.com/voxpupuli/puppet-collectd/pull/797) ([mrunge](https://github.com/mrunge))
+- Validate bind view parameters [\#796](https://github.com/voxpupuli/puppet-collectd/pull/796) ([smortex](https://github.com/smortex))
+
+**Fixed bugs:**
+
+- collectd::plugin::python::module does not support number options [\#662](https://github.com/voxpupuli/puppet-collectd/issues/662)
+- Fixes \#662 accept numbers into configuration file [\#818](https://github.com/voxpupuli/puppet-collectd/pull/818) ([traylenator](https://github.com/traylenator))
+
+**Merged pull requests:**
+
+- dont use topscope variables or includes [\#809](https://github.com/voxpupuli/puppet-collectd/pull/809) ([bastelfreak](https://github.com/bastelfreak))
+- drop centos 6 support [\#808](https://github.com/voxpupuli/puppet-collectd/pull/808) ([bastelfreak](https://github.com/bastelfreak))
+- A collectd::plugin::python acceptance test [\#805](https://github.com/voxpupuli/puppet-collectd/pull/805) ([traylenator](https://github.com/traylenator))
+- doc: tell rake rubocop is needed [\#799](https://github.com/voxpupuli/puppet-collectd/pull/799) ([sileht](https://github.com/sileht))
+
+## [v9.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.1) (2018-05-21)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v9.0.0...v9.0.1)
+
+**Fixed bugs:**
+
+- Fix trailing spaces in the snmp plugin config file [\#794](https://github.com/voxpupuli/puppet-collectd/pull/794) ([smortex](https://github.com/smortex))
+
+## [v9.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v9.0.0) (2018-05-20)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.3.0...v9.0.0)
+
+**Breaking changes:**
+
+- collectd::plugin::ceph - Add additional data types [\#781](https://github.com/voxpupuli/puppet-collectd/pull/781) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::bind - Add additional data types [\#780](https://github.com/voxpupuli/puppet-collectd/pull/780) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::apache - Use data types [\#779](https://github.com/voxpupuli/puppet-collectd/pull/779) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::amqp - Use data types [\#778](https://github.com/voxpupuli/puppet-collectd/pull/778) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::oracle - Use data types [\#776](https://github.com/voxpupuli/puppet-collectd/pull/776) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::network - Add data types [\#775](https://github.com/voxpupuli/puppet-collectd/pull/775) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Use data types, remove anchors [\#773](https://github.com/voxpupuli/puppet-collectd/pull/773) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- config.pp clean up [\#772](https://github.com/voxpupuli/puppet-collectd/pull/772) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Standardize file permissions, allow non-root [\#767](https://github.com/voxpupuli/puppet-collectd/pull/767) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+**Implemented enhancements:**
+
+- Owner and modes for plugin files should reference ones set in collectd init [\#719](https://github.com/voxpupuli/puppet-collectd/issues/719)
+- Add support for nut plugin \(\#621\) [\#681](https://github.com/voxpupuli/puppet-collectd/pull/681) ([trustchk](https://github.com/trustchk))
+
+**Fixed bugs:**
+
+- service resource name 'collectd' should be renamed [\#688](https://github.com/voxpupuli/puppet-collectd/issues/688)
+- Remove array sorting in python module template \(\#586\) [\#792](https://github.com/voxpupuli/puppet-collectd/pull/792) ([jlutran](https://github.com/jlutran))
+- Use $collectd::service\_name consistently [\#771](https://github.com/voxpupuli/puppet-collectd/pull/771) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+**Merged pull requests:**
+
+- Rely on beaker-hostgenerator for docker nodesets [\#791](https://github.com/voxpupuli/puppet-collectd/pull/791) ([ekohl](https://github.com/ekohl))
+- collectd::plugin::contextswitch - Use data types [\#787](https://github.com/voxpupuli/puppet-collectd/pull/787) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::cpu - Use data types [\#786](https://github.com/voxpupuli/puppet-collectd/pull/786) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::cpufreq - Use data types [\#785](https://github.com/voxpupuli/puppet-collectd/pull/785) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::conntrack - Use data types [\#784](https://github.com/voxpupuli/puppet-collectd/pull/784) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::chain - Use data types [\#783](https://github.com/voxpupuli/puppet-collectd/pull/783) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::cgroups - Add more data types [\#782](https://github.com/voxpupuli/puppet-collectd/pull/782) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::aggregation - add data types [\#777](https://github.com/voxpupuli/puppet-collectd/pull/777) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Use one operating system for most RSpec tests [\#770](https://github.com/voxpupuli/puppet-collectd/pull/770) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Remove parameters from collectd::install class [\#769](https://github.com/voxpupuli/puppet-collectd/pull/769) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Remove parameters from collectd::service class [\#768](https://github.com/voxpupuli/puppet-collectd/pull/768) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- add assert\_private to private classes [\#766](https://github.com/voxpupuli/puppet-collectd/pull/766) ([bastelfreak](https://github.com/bastelfreak))
+- Convert collectd\_plugin\_fscache\_spec to rspec-puppet-facts [\#736](https://github.com/voxpupuli/puppet-collectd/pull/736) ([alexjfisher](https://github.com/alexjfisher))
+
+## [v8.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.3.0) (2018-03-28)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.2.0...v8.3.0)
+
+**Breaking changes:**
+
+- use Stdlib::Fqdn type for package\_keyserver / bump stdlib to 4.25 [\#759](https://github.com/voxpupuli/puppet-collectd/pull/759) ([marcdeop](https://github.com/marcdeop))
+
+**Implemented enhancements:**
+
+- Install package with options in sensors and disk plugins [\#762](https://github.com/voxpupuli/puppet-collectd/pull/762) ([jfroche](https://github.com/jfroche))
+
+**Merged pull requests:**
+
+- bump puppet version dependency to \>= 4.10.0 \< 6.0.0 [\#764](https://github.com/voxpupuli/puppet-collectd/pull/764) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v8.2.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.2.0) (2018-03-16)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.1.0...v8.2.0)
+
+**Implemented enhancements:**
+
+- Add intel\_pmu plugin [\#760](https://github.com/voxpupuli/puppet-collectd/pull/760) ([pllopis](https://github.com/pllopis))
+- feat: add package\_keyserver parameter [\#746](https://github.com/voxpupuli/puppet-collectd/pull/746) ([marcdeop](https://github.com/marcdeop))
+- Add class ovs\_events plugin [\#743](https://github.com/voxpupuli/puppet-collectd/pull/743) ([paramite](https://github.com/paramite))
+
+**Fixed bugs:**
+
+- Collectd fails to start when wsrepstats is enabled [\#757](https://github.com/voxpupuli/puppet-collectd/issues/757)
+- Fix the MySQL plugin's WsrepStats parameter [\#758](https://github.com/voxpupuli/puppet-collectd/pull/758) ([steventwheeler](https://github.com/steventwheeler))
+
+## [v8.1.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.1.0) (2018-02-13)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.0.1...v8.1.0)
+
+**Implemented enhancements:**
+
+- update version for collectd package [\#752](https://github.com/voxpupuli/puppet-collectd/pull/752) ([vaclandic](https://github.com/vaclandic))
+
+**Merged pull requests:**
+
+- generate acceptance tests by modulesync [\#754](https://github.com/voxpupuli/puppet-collectd/pull/754) ([bastelfreak](https://github.com/bastelfreak))
+- add ruby 2.5.0 to the testmatrix [\#751](https://github.com/voxpupuli/puppet-collectd/pull/751) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v8.0.1](https://github.com/voxpupuli/puppet-collectd/tree/v8.0.1) (2018-01-26)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v8.0.0...v8.0.1)
+
+**Merged pull requests:**
+
+- Adds class ovs\_stats plugin [\#742](https://github.com/voxpupuli/puppet-collectd/pull/742) ([paramite](https://github.com/paramite))
+- Remove duplicate 'include' [\#740](https://github.com/voxpupuli/puppet-collectd/pull/740) ([alexjfisher](https://github.com/alexjfisher))
+
+## [v8.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v8.0.0) (2017-12-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v7.0.0...v8.0.0)
+
+**Breaking changes:**
+
+- plugin::genericjmx::mbean - Use data types [\#726](https://github.com/voxpupuli/puppet-collectd/pull/726) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::genericjmx::connection - Use data types [\#725](https://github.com/voxpupuli/puppet-collectd/pull/725) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filecount::directory - data type changes [\#718](https://github.com/voxpupuli/puppet-collectd/pull/718) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Make it possible to add processes one by one [\#712](https://github.com/voxpupuli/puppet-collectd/pull/712) ([oscarkraemer](https://github.com/oscarkraemer))
+
+**Implemented enhancements:**
+
+- Escape json posts in curl\_json plugin [\#735](https://github.com/voxpupuli/puppet-collectd/pull/735) ([alexjfisher](https://github.com/alexjfisher))
+- added: check params variable in query pg template [\#731](https://github.com/voxpupuli/puppet-collectd/pull/731) ([vaclandic](https://github.com/vaclandic))
+- plugin/mysql: optional wsrepstats setting [\#710](https://github.com/voxpupuli/puppet-collectd/pull/710) ([martbhell](https://github.com/martbhell))
+
+**Fixed bugs:**
+
+- Process plugin silently breaks processmatch/process defines. [\#652](https://github.com/voxpupuli/puppet-collectd/issues/652)
+- Processes plugin creates strange config [\#595](https://github.com/voxpupuli/puppet-collectd/issues/595)
+
+**Merged pull requests:**
+
+- Fix typos in README [\#737](https://github.com/voxpupuli/puppet-collectd/pull/737) ([alexjfisher](https://github.com/alexjfisher))
+- replace topscope variables with facts hash [\#734](https://github.com/voxpupuli/puppet-collectd/pull/734) ([bastelfreak](https://github.com/bastelfreak))
+- Remove EOL operatingsystems [\#733](https://github.com/voxpupuli/puppet-collectd/pull/733) ([ekohl](https://github.com/ekohl))
+- plugin::mysql::database - Add data type [\#727](https://github.com/voxpupuli/puppet-collectd/pull/727) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::target - Use data types [\#723](https://github.com/voxpupuli/puppet-collectd/pull/723) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::rule - add data type [\#722](https://github.com/voxpupuli/puppet-collectd/pull/722) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::match - Use data types [\#721](https://github.com/voxpupuli/puppet-collectd/pull/721) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::filter::chain - Use data types [\#720](https://github.com/voxpupuli/puppet-collectd/pull/720) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- collectd::plugin::exec::cmd clean up [\#717](https://github.com/voxpupuli/puppet-collectd/pull/717) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::apache::instance -don't assign from params [\#715](https://github.com/voxpupuli/puppet-collectd/pull/715) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+## [v7.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v7.0.0) (2017-11-11)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v6.0.0...v7.0.0)
+
+**Breaking changes:**
+
+- Bump puppetlabs-stdlib to 4.13.1 [\#703](https://github.com/voxpupuli/puppet-collectd/pull/703) ([juniorsysadmin](https://github.com/juniorsysadmin))
+
+**Implemented enhancements:**
+
+- Add Zookeeper plugin [\#670](https://github.com/voxpupuli/puppet-collectd/pull/670) ([jamtur01](https://github.com/jamtur01))
+
+**Fixed bugs:**
+
+- Fix markup of headers [\#711](https://github.com/voxpupuli/puppet-collectd/pull/711) ([traylenator](https://github.com/traylenator))
+- Fix strict variables error when facts are missing [\#708](https://github.com/voxpupuli/puppet-collectd/pull/708) ([alexjfisher](https://github.com/alexjfisher))
+- Install 'collectd-python' package on Amazon Linux. [\#671](https://github.com/voxpupuli/puppet-collectd/pull/671) ([irgeek](https://github.com/irgeek))
+
+**Closed issues:**
+
+- Support the ZooKeeper plugin [\#654](https://github.com/voxpupuli/puppet-collectd/issues/654)
+- Collectd::Plugin::Aggregation::Aggregator fails on 5.2 [\#596](https://github.com/voxpupuli/puppet-collectd/issues/596)
+
+**Merged pull requests:**
+
+- Use $facts hash instead of topscope variables [\#709](https://github.com/voxpupuli/puppet-collectd/pull/709) ([alexjfisher](https://github.com/alexjfisher))
+- replace validate\_\* with datatypes [\#706](https://github.com/voxpupuli/puppet-collectd/pull/706) ([bastelfreak](https://github.com/bastelfreak))
+- plugin::dbi - Use data types [\#705](https://github.com/voxpupuli/puppet-collectd/pull/705) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::curl - Use data types [\#704](https://github.com/voxpupuli/puppet-collectd/pull/704) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::aggregation - Use data types [\#702](https://github.com/voxpupuli/puppet-collectd/pull/702) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- plugin::apache - Use data types [\#701](https://github.com/voxpupuli/puppet-collectd/pull/701) ([juniorsysadmin](https://github.com/juniorsysadmin))
+- Fix zookeeper tests [\#698](https://github.com/voxpupuli/puppet-collectd/pull/698) ([bastelfreak](https://github.com/bastelfreak))
+
+## [v6.0.0](https://github.com/voxpupuli/puppet-collectd/tree/v6.0.0) (2017-10-18)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-collectd/compare/v5.3.0...v6.0.0)
+
+**Breaking changes:**
+
+- Fix sensors plugin params [\#683](https://github.com/voxpupuli/puppet-collectd/pull/683) ([archii](https://github.com/archii))
+- Fixes \#549: Unable to define a multi-value type [\#604](https://github.com/voxpupuli/puppet-collectd/pull/604) ([jkroepke](https://github.com/jkroepke))
+
+**Implemented enhancements:**
+
+- Add parameter to customize location of python plugin configuration [\#638](https://github.com/voxpupuli/puppet-collectd/issues/638)
+- Support for snmp v3 [\#236](https://github.com/voxpupuli/puppet-collectd/issues/236)
+- Add support for Chain6 directive [\#694](https://github.com/voxpupuli/puppet-collectd/pull/694) ([herver](https://github.com/herver))
+- Change 'Redhat' to 'RedHat' when comparing against the osfamily fact [\#667](https://github.com/voxpupuli/puppet-collectd/pull/667) ([bodgit](https://github.com/bodgit))
+- Add SNMPv3 support [\#665](https://github.com/voxpupuli/puppet-collectd/pull/665) ([bodgit](https://github.com/bodgit))
+- Add tests for the AMQP plugin and fix broken StoreRates configuration when amqpformat = JSON [\#661](https://github.com/voxpupuli/puppet-collectd/pull/661) ([oranenj](https://github.com/oranenj))
+- provide sane defaults for manage\_repo [\#658](https://github.com/voxpupuli/puppet-collectd/pull/658) ([bastelfreak](https://github.com/bastelfreak))
+- openldap - add binddn and password parameters [\#657](https://github.com/voxpupuli/puppet-collectd/pull/657) ([leonkyneur](https://github.com/leonkyneur))
+- Added ISC DHCP pool metrics plugin [\#650](https://github.com/voxpupuli/puppet-collectd/pull/650) ([Yuav](https://github.com/Yuav))
+- df: add devices parameter [\#646](https://github.com/voxpupuli/puppet-collectd/pull/646) ([maage](https://github.com/maage))
+- Added cuda GPU plugin [\#645](https://github.com/voxpupuli/puppet-collectd/pull/645) ([Yuav](https://github.com/Yuav))
+- Plugin turbostat [\#642](https://github.com/voxpupuli/puppet-collectd/pull/642) ([jkroepke](https://github.com/jkroepke))
+- Parametrize destination of python config [\#637](https://github.com/voxpupuli/puppet-collectd/pull/637) ([Pigueiras](https://github.com/Pigueiras))
+- Stop specifying $name as the default host value [\#631](https://github.com/voxpupuli/puppet-collectd/pull/631) ([jamtur01](https://github.com/jamtur01))
+- Add CounterSum support to statsd config [\#620](https://github.com/voxpupuli/puppet-collectd/pull/620) ([phss](https://github.com/phss))
+- add new parameter module\_import in plugin::python::module [\#618](https://github.com/voxpupuli/puppet-collectd/pull/618) ([contargo-development](https://github.com/contargo-development))
+- Added plugin oracle [\#613](https://github.com/voxpupuli/puppet-collectd/pull/613) ([jkroepke](https://github.com/jkroepke))
+- Changes RedHat repo to use the EPEL module [\#603](https://github.com/voxpupuli/puppet-collectd/pull/603) ([petems](https://github.com/petems))
+- collectd::plugin::amqp is now supporting the routingkey option [\#582](https://github.com/voxpupuli/puppet-collectd/pull/582) ([alexxxxx](https://github.com/alexxxxx))
+
+**Fixed bugs:**
+
+- Template in collectd::plugin::perl::plugin generates unstable output [\#635](https://github.com/voxpupuli/puppet-collectd/issues/635)
+- Unable to define a multi-value type [\#549](https://github.com/voxpupuli/puppet-collectd/issues/549)
+- Fix writing of postgresql query params and add a test [\#656](https://github.com/voxpupuli/puppet-collectd/pull/656) ([andrewward](https://github.com/andrewward))
+- Add Support for older versions of `libyajl` [\#648](https://github.com/voxpupuli/puppet-collectd/pull/648) ([petems](https://github.com/petems))
+- Oracle Database definition must be at bottom [\#643](https://github.com/voxpupuli/puppet-collectd/pull/643) ([jkroepke](https://github.com/jkroepke))
+- Remove quotes from boolean options [\#640](https://github.com/voxpupuli/puppet-collectd/pull/640) ([mirekys](https://github.com/mirekys))
+- Use sort on hashes in template perl/plugin.erb [\#636](https://github.com/voxpupuli/puppet-collectd/pull/636) ([blajos](https://github.com/blajos))
+
+**Closed issues:**
+
+- IPTables plugin doesn't support IPv6 [\#693](https://github.com/voxpupuli/puppet-collectd/issues/693)
+- aggregation plugin error: The plugin either only expects "simple" configuration statements or wasn't loaded using `LoadPlugin'.  [\#680](https://github.com/voxpupuli/puppet-collectd/issues/680)
+- Why does the python plugin insist on permissions?  [\#679](https://github.com/voxpupuli/puppet-collectd/issues/679)
+- Remove quotes from the Forward option [\#639](https://github.com/voxpupuli/puppet-collectd/issues/639)
+
+**Merged pull requests:**
+
+- modulesync 1.2.0 [\#696](https://github.com/voxpupuli/puppet-collectd/pull/696) ([wyardley](https://github.com/wyardley))
+- bump version on puppetlabs/apt dependency [\#692](https://github.com/voxpupuli/puppet-collectd/pull/692) ([costela](https://github.com/costela))
+- modulesync 0.22.0 [\#687](https://github.com/voxpupuli/puppet-collectd/pull/687) ([bastelfreak](https://github.com/bastelfreak))
+- Remove interval parameter from write plugins. [\#685](https://github.com/voxpupuli/puppet-collectd/pull/685) ([kbor](https://github.com/kbor))
+- add fscache plugin [\#682](https://github.com/voxpupuli/puppet-collectd/pull/682) ([wildente](https://github.com/wildente))
+- Bump required puppet version 4.6.1-\>4.7.0 [\#675](https://github.com/voxpupuli/puppet-collectd/pull/675) ([bastelfreak](https://github.com/bastelfreak))
+- drop legacy OS from support matrix [\#674](https://github.com/voxpupuli/puppet-collectd/pull/674) ([bastelfreak](https://github.com/bastelfreak))
+- rspec-puppet-facts integration [\#673](https://github.com/voxpupuli/puppet-collectd/pull/673) ([bastelfreak](https://github.com/bastelfreak))
+- Fix github license detection [\#669](https://github.com/voxpupuli/puppet-collectd/pull/669) ([alexjfisher](https://github.com/alexjfisher))
+- Do not set a value for the collectd\_version fact if collectd is not y… [\#668](https://github.com/voxpupuli/puppet-collectd/pull/668) ([m3t30r](https://github.com/m3t30r))
+- Install Redis plugin package if needed [\#666](https://github.com/voxpupuli/puppet-collectd/pull/666) ([bodgit](https://github.com/bodgit))
+- Update `collectd::plugin::python::module` README [\#660](https://github.com/voxpupuli/puppet-collectd/pull/660) ([sigv](https://github.com/sigv))
+- add $measureresponsecode for curl plugin [\#659](https://github.com/voxpupuli/puppet-collectd/pull/659) ([azhurbilo](https://github.com/azhurbilo))
+- curl\_json: support parameters: host, digest, post, timeout [\#649](https://github.com/voxpupuli/puppet-collectd/pull/649) ([maage](https://github.com/maage))
+
+## [v5.3.0](https://github.com/voxpupuli/puppet-collectd/tree/v5.3.0) (2017-01-13)
+
+This is the last release with Puppet 3 support!
+* Include custom rabbitmq types
+* Enable acceptance tests
+* Add Collectd CI Package repos
+* Add write_prometheus plugin (#600)
+* Fix python_dir fact for RedHat.
+* Updates to write_riemann (#605)
+* Add base threshold plugin
+* Tag collectd's concat resources
+
+## 2016-12-05 Release 5.2.0
+
+* Modulesync with latest Vox Pupuli defaults
+* Fix: Enforce collectd.d directory before all Concats
+* Fix: Add ability to add files via hiera
+* Fix: Don't accidently upgrade collectd while installing plugins
+* Fix: Manage EPEL if needed
+* Fix: Set correct installation path for plugins
+* Feature: Updat kafka plugin
+* Feature: Update Ceph plugin to support more cluster types
+* Feature: Add SMART plugin
+* Feature: Add support for multiple instances for memcached
+* Feature: Extend snmp plugin
+* Feature: Add hddtemp plugin
+* Feature: Add UUID plugin
+* Feature: Introduce rspec-puppet-facts to multiple spec tests
+* Feature: Add ppa support on Ubuntu
+* Feature: Add provider_proxy for pip
+* Feature: Add support for Interface plugin option ReportInactive
+* Feature: Add support for ReportNumCpu in CPU plugin introduced in collectd 5.6
+* Feature: Add thermal plugin
+* Feature: Allow multiple python plugin configs
+
+
+## 2016-08-18 Release 5.1.0
+
+* Modulesync with latest Vox Pupuli defaults
+* Fix: Target replace filter fix to allow identical keys with different values
+* Fix: Check $manage_package if not undef
+* Fix: Adding has_wordexp variable for template
+* Fix: Remove quotes from VerifyPeer and VerifyHost (don't treat bools as strings)
+* Feature: Add password parameter to redis plugin
+* Feature: Add scale plugin
+* Feature: Add a java_home option to javaplugin
+
+
 ## 2016-05-26 Release 5.0.0
 
 ### Backwards-incompatible changes:
@@ -529,3 +911,6 @@ Add curl_json and apache plugin
   15f1ea7 Add Solaris collectd parameters
   c013e73 Add collectd df plugin support
   9cac9c4 Add collectd support.
+
+
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*

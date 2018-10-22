@@ -12,7 +12,7 @@ class collectd::plugin::dbi (
 
   $_manage_package = pick($manage_package, $::collectd::manage_package)
 
-  if $::osfamily == 'Redhat' {
+  if $facts['os']['family'] == 'RedHat' {
     if $_manage_package {
       package { 'collectd-dbi':
         ensure => $ensure,
@@ -34,10 +34,10 @@ class collectd::plugin::dbi (
 
   concat { "${collectd::plugin_conf_dir}/dbi-config.conf":
     ensure         => $ensure,
-    mode           => '0640',
-    owner          => 'root',
-    group          => $collectd::root_group,
-    notify         => Service['collectd'],
+    mode           => $collectd::config_mode,
+    owner          => $collectd::config_owner,
+    group          => $collectd::config_group,
+    notify         => Service[$collectd::service_name],
     ensure_newline => true,
   }
 

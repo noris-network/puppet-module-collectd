@@ -1,27 +1,37 @@
-#== Class: collectd::plugin::smart
-#
-# Class to manage smart plugin for collectd 
-# === Parameters
-# [*ensure*]
-#   ensure param for collectd::plugin type
-# 
-# [*disks*]
-#   array of disks to create config for 
-#   example: ['sda', 'sdb', 'sdc']
-#
-# [*ignoreselected*]
-#   If enabled, ignore given disks
-#
+# https://collectd.org/wiki/index.php/Plugin:SMART
 class collectd::plugin::smart (
-  $ensure                 = present,
-  $ignoreselected         = false,
-  $disks                  = [],
+  Array $disks            = [],
+  $ensure                 = 'present',
+  Boolean $ignoreselected = false,
+  $interval               = undef,
+  $manage_package         = undef,
+  $package_name           = 'collectd-smart',
 ) {
 
-  validate_array($disks)
+  include ::collectd
 
-  collectd::plugin {'smart':
-    ensure  => $ensure,
-    content => template('collectd/plugin/smart.conf.erb'),
+  if $facts['os']['family'] == 'RedHat' {
+    if $manage_package != undef {
+      $_manage_package = $manage_package
+    } else {
+      if versioncmp($::collectd::collectd_version_real, '5.5') >= 0 {
+        $_manage_package = true
+    } else {
+        $_manage_package = false
+      }
+    }
+
+    if $_manage_package {
+      package { 'collectd-smart':
+        ensure => $ensure,
+        name   => $package_name,
+      }
+    }
+  }
+
+  collectd::plugin { 'smart':
+    ensure   => $ensure,
+    content  => template('collectd/plugin/smart.conf.erb'),
+    interval => $interval,
   }
 }

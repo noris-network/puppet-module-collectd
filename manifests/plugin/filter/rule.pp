@@ -1,10 +1,10 @@
 # https://collectd.org/wiki/index.php/Chains
 define collectd::plugin::filter::rule (
-  $chain,
+  String $chain,
 ) {
 
-  include ::collectd
-  include ::collectd::plugin::filter
+  include collectd
+  include collectd::plugin::filter
 
   $fragment_order = "10_${title}"
   $conf_file = "${collectd::plugin_conf_dir}/filter-chain-${chain}.conf"

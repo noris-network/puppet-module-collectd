@@ -1,9 +1,9 @@
 #
-define collectd::plugin::chain (
-  $chainname     = 'Main',
-  $ensure        = 'present',
-  $defaulttarget = 'write',
-  $rules         = []
+class collectd::plugin::chain (
+  String $chainname                       = 'Main',
+  Enum['present', 'absent'] $ensure       = 'present',
+  Collectd::Filter::Target $defaulttarget = 'write',
+  Array $rules                            = []
 ) {
 
   include ::collectd
@@ -12,10 +12,10 @@ define collectd::plugin::chain (
 
   file { "${conf_dir}/99-chain-${chainname}.conf":
     ensure  => $ensure,
-    mode    => '0640',
-    owner   => 'root',
-    group   => $collectd::root_group,
+    mode    => $collectd::config_mode,
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
     content => template('collectd/plugin/chain.conf.erb'),
-    notify  => Service['collectd'],
+    notify  => Service[$collectd::service_name],
   }
 }

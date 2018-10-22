@@ -36,40 +36,87 @@
 #    'Password' => 'guest_pass',
 #    'Scheme'   => 'http',
 #    'Port'     => '15672',
-#    'Host'     => $::fqdn,
+#    'Host'     => $facts['fqdn'],
 #    'Realm'    => '"RabbitMQ Management"',
 #   }
 #
 class collectd::plugin::rabbitmq (
-  $config           = {
+  # lint:ignore:parameter_order
+  Hash $config      = {
     'Username' => 'guest',
     'Password' => 'guest',
     'Scheme'   => 'http',
     'Port'     => '15672',
-    'Host'     => $::fqdn,
+    'Host'     => $facts['fqdn'],
     'Realm'    => '"RabbitMQ Management"',
   },
-  $ensure           = 'present',
+  # lint:endignore
+  String $ensure    = 'present',
   $interval         = undef,
   $manage_package   = undef,
   $package_name     = 'collectd-rabbitmq',
   $package_provider = 'pip',
+  $provider_proxy   = undef,
+  $custom_types_db  = undef,
 ) {
   include ::collectd
 
-  validate_string($ensure)
-  validate_hash($config)
-
-  $_manage_package = pick($manage_package, $::collectd::manage_package)
-
-  if $_manage_package {
-    package { $package_name:
-      ensure   => $ensure,
-      provider => $package_provider,
+  case $facts['os']['family'] {
+    'RedHat': {
+      $_custom_types_db = '/usr/share/collectd-rabbitmq/types.db.custom'
+    }
+    default: {
+      $_custom_types_db = '/usr/local/share/collectd-rabbitmq/types.db.custom'
     }
   }
+
+  $_real_custom_types_db = pick($custom_types_db, $_custom_types_db)
+  $_manage_package = pick($manage_package, $::collectd::manage_package)
+
+  if ($_manage_package) {
+    if (!defined(Package['python-pip'])) {
+      package { 'python-pip': ensure => 'present', }
+
+      Package[$package_name] {
+        require => Package['python-pip'],
+      }
+
+      if $facts['os']['family'] == 'RedHat' {
+        # Epel is installed in install.pp if manage_repo is true
+        # python-pip doesn't exist in base for RedHat. Need epel installed first
+        if (defined(Class['::epel'])) {
+          Package['python-pip'] {
+            require => Class['::epel'],
+          }
+        }
+      }
+    }
+  }
+
+  if ($_manage_package) and ($provider_proxy) {
+    $install_options = [{'--proxy' => $provider_proxy}]
+  } else {
+    $install_options = undef
+  }
+
+  package { $package_name:
+    ensure          => $ensure,
+    provider        => $package_provider,
+    install_options => $install_options,
+  }
+
+  file { 'rabbitmq.load':
+    ensure  => $ensure,
+    path    => "${::collectd::plugin_conf_dir}/10-rabbitmq.conf",
+    owner   => $collectd::config_owner,
+    group   => $collectd::config_group,
+    mode    => $collectd::config_mode,
+    content => template('collectd/plugin/rabbitmq.conf.erb'),
+    notify  => Service[$collectd::service_name],
+  }
+
   collectd::plugin::python::module { 'collectd_rabbitmq.collectd_plugin':
     ensure => $ensure,
-    config => $config,
+    config => [$config],
   }
 }
