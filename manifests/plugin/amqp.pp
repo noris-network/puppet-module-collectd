@@ -17,7 +17,7 @@ class collectd::plugin::amqp (
   Optional[Integer[1]] $interval     = undef,
   Boolean $graphiteseparateinstances = false,
   Boolean $graphitealwaysappendds    = false,
-  String  $amqpqueue                 = undef,
+  Optional[String] $amqpqueue        = undef,
   Boolean $amqppublish               = false,
   Boolean $amqpsubscribe             = false,
 ) {
