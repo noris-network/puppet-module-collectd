@@ -24,7 +24,7 @@ class collectd::plugin::amqp (
 
   include collectd
 
-  if $_manage_package {
+  if $manage_package {
     if $facts['os']['family'] == 'RedHat' {
       package { 'collectd-amqp':
         ensure => $ensure,
