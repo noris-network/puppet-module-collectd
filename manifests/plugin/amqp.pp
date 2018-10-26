@@ -11,7 +11,7 @@ class collectd::plugin::amqp (
   Boolean $amqpstorerates            = false,
   String $amqpexchange               = 'metrics',
   Boolean $amqppersistent            = true,
-  String $amqproutingkey             = 'collectd',
+  Optional[Array] $amqproutingkeys   = undef,
   String $graphiteprefix             = 'collectd.',
   String[1] $escapecharacter         = '_',
   Optional[Integer[1]] $interval     = undef,

@@ -3,7 +3,8 @@
 #
 # AMQP Publish
 #
-  <Publish "amqp">
+<% @amqproutingkeys.each do |amqproutingkey| %>
+  <Publish "<%= @amqproutingkey %>">
     Host "<%= @amqphost %>"
     Port "<%= @amqpport %>"
     VHost "<%= @amqpvhost%>"
@@ -46,7 +47,7 @@
 #
 # AMQP Subscrube
 #
-  <Subscribe "amqp">
+  <Subscribe "amqp-<%= @amqproutingkey %>">
     Host "<%= @amqphost %>"
     Port "<%= @amqpport %>"
     VHost "<%= @amqpvhost%>"
@@ -68,5 +69,6 @@
 #
 # END AMQP Subscrube
 #
+<% end -%>
 <% end -%>
 </Plugin>
