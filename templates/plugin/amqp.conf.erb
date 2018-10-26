@@ -1,9 +1,9 @@
 <Plugin amqp>
-<% if @amqppublish -%>
 #
 # AMQP Publish
 #
 <% @amqproutingkeys.each do |amqproutingkey| %>
+<% if @amqppublish -%>
   <Publish "<%= @amqproutingkey %>">
     Host "<%= @amqphost %>"
     Port "<%= @amqpport %>"
