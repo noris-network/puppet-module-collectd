@@ -4,7 +4,7 @@
 #
 <% @amqproutingkeys.each do |amqproutingkey| %>
 <% if @amqppublish -%>
-  <Publish "<%= @amqproutingkey %>">
+  <Publish "<%= amqproutingkey %>">
     Host "<%= @amqphost %>"
     Port "<%= @amqpport %>"
     VHost "<%= @amqpvhost%>"
@@ -24,7 +24,7 @@
 <% if @amqppersistent -%>
     Persistent <%= @amqppersistent %>
 <% end -%>
-    RoutingKey "<%= @amqproutingkey %>"
+    RoutingKey "<%= amqproutingkey %>"
 <% if @graphiteprefix -%>
     GraphitePrefix "<%= @graphiteprefix %>"
     GraphiteEscapeChar "<%= @escapecharacter %>"
@@ -47,7 +47,7 @@
 #
 # AMQP Subscrube
 #
-  <Subscribe "amqp-<%= @amqproutingkey %>">
+  <Subscribe "amqp-<%= amqproutingkey %>">
     Host "<%= @amqphost %>"
     Port "<%= @amqpport %>"
     VHost "<%= @amqpvhost%>"
@@ -62,8 +62,8 @@
 <% if @amqpqueue -%>
     Queue "<%= @amqpqueue %>"
 <% end -%>
-<% if @amqproutingkey -%>
-    RoutingKey "<%= @amqproutingkey %>"
+<% if amqproutingkey -%>
+    RoutingKey "<%= amqproutingkey %>"
 <% end -%>
   </Subscribe>
 #
