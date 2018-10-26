@@ -14,6 +14,5 @@ define collectd::plugin::nut::ups (
     owner   => $collectd::config_owner,
     group   => $collectd::config_group,
     content => template('collectd/plugin/nut/ups.conf.erb'),
-    notify  => Service['collectd'],
   }
 }
