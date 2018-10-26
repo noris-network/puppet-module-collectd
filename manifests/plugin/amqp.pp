@@ -1,5 +1,5 @@
 # https://collectd.org/wiki/index.php/Plugin:AMQP
-define collectd::plugin::amqp (
+class collectd::plugin::amqp (
   Enum['present', 'absent'] $ensure  = 'present',
   Boolean $manage_package            = $collectd::manage_package,
   Stdlib::Host $amqphost             = 'localhost',
